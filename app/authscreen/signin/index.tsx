@@ -1,19 +1,17 @@
+import { Link } from "expo-router";
 import { Image } from "react-native";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { MaterialIcons, FontAwesome, AntDesign } from "@expo/vector-icons";
-import { Link } from "expo-router";
 
 export default function Index() {
   return (
     <View className="flex-1 bg-white px-4 pt-16">
-      {/* Logo */}
       <Image
-        source={require("../assets/images/Icon (1).png")}
+        source={require("../../../assets/images/Icon (1).png")}
         className="mb-4 mx-auto w-16 h-16"
         resizeMode="contain"
       />
 
-      {/* Welcome Text */}
       <Text className="text-center font-poppins700 text-base text-[#223263]">
         Welcome to Lafyuu
       </Text>
@@ -21,9 +19,7 @@ export default function Index() {
         Sign in to continue
       </Text>
 
-      {/* Input Fields */}
       <View className="mt-7 space-y-4">
-        {/* Email Input */}
         <View className="relative">
           <TextInput
             placeholder="Your Email"
@@ -37,7 +33,6 @@ export default function Index() {
           />
         </View>
 
-        {/* Password Input */}
         <View className="relative">
           <TextInput
             placeholder="Password"
@@ -53,21 +48,17 @@ export default function Index() {
         </View>
       </View>
 
-      {/* Sign In Button */}
       <TouchableOpacity className="mt-6 bg-[#40BFFF] py-3 rounded-md">
         <Text className="text-center font-poppins600 text-white text-sm">
           Sign In
         </Text>
       </TouchableOpacity>
 
-      {/* OR */}
       <Text className="text-center font-poppins400 text-sm text-[#9098B1] mt-4">
         OR
       </Text>
 
-      {/* Social Login Buttons */}
       <View className="mt-4 space-y-3">
-        {/* Google Login */}
         <TouchableOpacity className="flex-row items-center justify-center border border-[#EBF0FF] py-3 rounded-md">
           <AntDesign name="google" size={20} color="#FF3B30" className="mr-2" />
           <Text className="font-poppins400 text-sm text-[#223263]">
@@ -75,7 +66,6 @@ export default function Index() {
           </Text>
         </TouchableOpacity>
 
-        {/* Facebook Login */}
         <TouchableOpacity className="flex-row items-center justify-center border border-[#EBF0FF] py-3 rounded-md">
           <FontAwesome name="facebook" size={20} color="#1877F2" className="mr-2" />
           <Text className="font-poppins400 text-sm text-[#223263]">
@@ -84,12 +74,11 @@ export default function Index() {
         </TouchableOpacity>
       </View>
 
-      {/* Forgot Password / Register */}
       <View className="mt-4 flex-row justify-center space-x-1">
-        <Text className="text-sm font-poppins400 text-[#9098B1] cursor-pointer">
+        <Text className="text-sm font-poppins400 text-[#9098B1]">
           Forgot Password?
         </Text>
-        <Link href="/authscreen/signin">
+        <Link href="/authscreen/signup">
           <Text className="text-sm font-poppins600 text-[#40BFFF] cursor-pointer">
             Register
           </Text>
