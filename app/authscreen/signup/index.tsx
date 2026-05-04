@@ -42,7 +42,7 @@ export default function Index() {
   return (
     <ScrollView
       className="flex-1 bg-white"
-      contentContainerClassName="px-4 pt-16 pb-10"
+      contentContainerClassName="px-4 pb-10 flex-1 justify-center"
       showsVerticalScrollIndicator={false}
       keyboardShouldPersistTaps="handled"
     >
@@ -59,7 +59,7 @@ export default function Index() {
         Create an new account
       </Text>
 
-      <View className="mt-7 space-y-4">
+      <View className="mt-7 flex flex-col gap-3">
         <View className="relative">
           <Controller
             control={control}
