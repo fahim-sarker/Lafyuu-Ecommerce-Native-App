@@ -1,6 +1,5 @@
 import { Link } from "expo-router";
-import { Image } from "react-native";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Text, View,Image, TextInput, TouchableOpacity } from "react-native";
 import { MaterialIcons, FontAwesome, AntDesign } from "@expo/vector-icons";
 
 export default function Index() {
