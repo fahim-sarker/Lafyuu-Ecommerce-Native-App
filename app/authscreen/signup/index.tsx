@@ -218,7 +218,7 @@ export default function Index() {
         OR
       </Text>
 
-      <View className="mt-4 space-y-3">
+      <View className="mt-4 flex flex-col gap-3">
         <TouchableOpacity className="flex-row items-center justify-center border border-[#EBF0FF] py-3 rounded-md">
           <AntDesign name="google" size={20} color="#FF3B30" className="mr-2" />
           <Text className="font-poppins400 text-sm text-[#223263]">
