@@ -80,9 +80,9 @@ export default function Index() {
 
       <View className="mt-4 flex-row justify-center space-x-1">
         <Text className="text-sm font-poppins400 text-[#9098B1] cursor-pointer">
-          Forgot Password?
+          Forgot Password? 
         </Text>
-        <Link href="/authscreen/signin">
+        <Link href="/authscreen/signup">
           <Text className="text-sm font-poppins600 text-[#40BFFF] cursor-pointer">
             Register
           </Text>
