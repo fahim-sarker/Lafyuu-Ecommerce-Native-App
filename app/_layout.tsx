@@ -5,11 +5,29 @@ import {
   Poppins_700Bold,
   useFonts,
 } from "@expo-google-fonts/poppins";
+import { AntDesign, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import { cssInterop } from "nativewind";
 import { useEffect } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "../global.css";
+
+cssInterop(MaterialIcons, {
+  className: {
+    target: "style",
+  },
+});
+cssInterop(FontAwesome, {
+  className: {
+    target: "style",
+  },
+});
+cssInterop(AntDesign, {
+  className: {
+    target: "style",
+  },
+});
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,7 +51,7 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView className="flex-1 px-4">
+      <SafeAreaView className="flex-1">
         <Stack screenOptions={{ headerShown: false }} />
       </SafeAreaView>
     </SafeAreaProvider>

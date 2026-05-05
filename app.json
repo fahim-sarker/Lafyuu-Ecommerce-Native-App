@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "svaproject",
-    "slug": "svaproject",
+    "name": "Lafyuu",
+    "slug": "lafyuecommerce",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "svaproject",
+    "scheme": "lafyuu",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -20,11 +20,11 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.fahim_sarker.svaproject"
+      "package": "com.lafyuu.ecommerce"
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png",
+      "favicon": "./assets/images/logo_icon.png",
       "bundler": "metro"
     },
     "plugins": [
@@ -32,7 +32,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/logo_icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
@@ -41,7 +41,8 @@
           }
         }
       ],
-      "expo-font"
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -50,8 +51,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "efe3360f-369e-4a70-ae21-751aed3b26c4"
+        "projectId": "6df9b016-1629-4c27-ba7d-b48a9fe6a49f"
       }
-    }
+    },
+    "owner": "fahim_sarker"
   }
 }

@@ -31,7 +31,7 @@ export default function Index() {
     <View className="flex-1 bg-white px-4 justify-center items-center">
       <View className="w-full">
         <Image
-          source={require("../assets/images/Icon (1).png")}
+          source={require("../assets/images/logo_icon.png")}
           className="mb-4 mx-auto w-16 h-16"
           resizeMode="contain"
         />
@@ -64,6 +64,7 @@ export default function Index() {
                   onBlur={onBlur}
                   keyboardType="email-address"
                   autoCapitalize="none"
+                  placeholderTextColor="#9098B1"
                   className={`pl-12 py-3 border ${
                     errors.email ? "border-red-500" : "border-[#EBF0FF]"
                   } rounded-md text-[#223263] text-sm font-poppins400`}
@@ -101,6 +102,7 @@ export default function Index() {
                   onChangeText={onChange}
                   onBlur={onBlur}
                   secureTextEntry
+                  placeholderTextColor="#9098B1"
                   className={`pl-12 py-3 border ${
                     errors.password ? "border-red-500" : "border-[#EBF0FF]"
                   } rounded-md text-[#223263] text-sm font-poppins400`}
