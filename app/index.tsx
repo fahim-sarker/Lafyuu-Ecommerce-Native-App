@@ -1,5 +1,5 @@
 import { AntDesign, FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
@@ -9,6 +9,7 @@ interface SignInForm {
 }
 
 export default function Index() {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -23,6 +24,7 @@ export default function Index() {
 
   const onSubmit: SubmitHandler<SignInForm> = data => {
     console.log("Form Data:", data);
+    router.push("/tabs/home");
   };
 
   return (
@@ -118,9 +120,8 @@ export default function Index() {
             )}
           </View>
         </View>
-
         <TouchableOpacity
-          className="mt-6 bg-[#40BFFF] py-3 rounded-md"
+          className="mt-6 bg-[#40BFFF] py-3 rounded-md shrink-0 w-full"
           onPress={handleSubmit(onSubmit)}
         >
           <Text className="text-center font-poppins600 text-white text-sm">

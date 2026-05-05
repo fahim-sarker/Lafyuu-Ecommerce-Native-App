@@ -33,7 +33,7 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView className="flex-1">
+      <SafeAreaView className="flex-1 px-4">
         <Stack screenOptions={{ headerShown: false }} />
       </SafeAreaView>
     </SafeAreaProvider>
