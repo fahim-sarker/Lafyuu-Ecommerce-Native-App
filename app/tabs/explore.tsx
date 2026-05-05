@@ -18,7 +18,6 @@ export default function Explore() {
 
   return (
     <View className="flex-1 bg-white">
-      {/* Header with Search */}
       <View className="border-b border-[#EBF0FF] p-4">
         <View className="relative">
           <TextInput
