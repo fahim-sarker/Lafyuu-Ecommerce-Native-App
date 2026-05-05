@@ -13,7 +13,7 @@ export default function Offer() {
           <Text className="font-poppins700 text-white text-xl w-2/3">Use "MEGASALE" Coupon for 90% off</Text>
         </View>
 
-        <View className="mt-8">
+        <View className="mt-4">
           <View className="bg-[#FB923C] p-6 rounded-md relative overflow-hidden">
              <Text className="font-poppins700 text-white text-2xl mb-4">Super Flash Sale 50% Off</Text>
              <View className="flex-row gap-2">
@@ -26,9 +26,13 @@ export default function Offer() {
           </View>
         </View>
 
-        <View className="bg-[#223263] p-6 rounded-md mt-4 mb-8">
+        <View className="bg-[#223263] p-6 rounded-md mt-4">
           <Text className="font-poppins700 text-white text-xl">Special Summer Sale</Text>
           <Text className="font-poppins400 text-white text-xs mt-2">Up to 70% off on all items</Text>
+        </View>
+        <View className="bg-[#15B5FF] p-6 rounded-md mt-4">
+          <Text className="font-poppins700 text-white text-xl">Flat 50% off</Text>
+          <Text className="font-poppins400 text-white text-xs mt-2">Use Code : FLAT50</Text>
         </View>
       </ScrollView>
     </View>
