@@ -1,8 +1,12 @@
+import { useStore } from "@/context/StoreContext";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React, { FC } from "react";
 
 const TabsLayout: FC = () => {
+  const { cart } = useStore();
+  const cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <Tabs
       screenOptions={{
@@ -48,14 +52,20 @@ const TabsLayout: FC = () => {
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="shopping-cart" size={24} color={color} />
           ),
+          tabBarBadge: cartItemCount > 0 ? cartItemCount : undefined,
+          tabBarBadgeStyle: {
+            backgroundColor: "#FF3B30",
+            color: "white",
+            fontSize: 10,
+          },
         }}
       />
       <Tabs.Screen
-        name="offer"
+        name="wishlist"
         options={{
-          title: "Offer",
+          title: "Wishlist",
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="discount" size={24} color={color} />
+            <MaterialIcons name="favorite-border" size={24} color={color} />
           ),
         }}
       />
@@ -75,7 +85,7 @@ const TabsLayout: FC = () => {
         }}
       />
       <Tabs.Screen
-        name="wishlist"
+        name="offer"
         options={{
           href: null,
         }}

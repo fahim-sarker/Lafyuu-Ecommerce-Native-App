@@ -2,6 +2,7 @@ import Categories from "@/components/home/category";
 import FeaturedSection from "@/components/home/featured-section";
 import ProductSlider from "@/components/home/product-slider";
 import RecommendedBanner from "@/components/home/recommended-banner";
+import { useRouter } from "expo-router";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { ScrollView, TextInput, TouchableOpacity, View } from "react-native";
@@ -119,6 +120,7 @@ const recommendedProducts = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -129,6 +131,8 @@ export default function Home() {
             placeholder="Search products..."
             value={searchQuery}
             onChangeText={setSearchQuery}
+            onSubmitEditing={() => router.push({ pathname: "/search", params: { q: searchQuery } })}
+            onFocus={() => router.push("/search")}
             className="flex-1 border-2 border-[#EBF0FF] rounded-md pl-9 py-3 text-sm font-poppins400 text-[#223263]"
             placeholderTextColor="#9098B1"
           />
@@ -137,11 +141,17 @@ export default function Home() {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity className="bg-[#F0F5FF] p-3 rounded-md">
+        <TouchableOpacity 
+          onPress={() => router.push("/tabs/wishlist")}
+          className="bg-[#F0F5FF] p-3 rounded-md"
+        >
           <FontAwesome name="heart-o" size={20} color="#FF3B30" />
         </TouchableOpacity>
 
-        <TouchableOpacity className="bg-[#F0F5FF] p-3 rounded-md relative">
+        <TouchableOpacity 
+          onPress={() => router.push("/notifications")}
+          className="bg-[#F0F5FF] p-3 rounded-md relative"
+        >
           <MaterialIcons name="notifications-none" size={20} color="#223263" />
           <View className="absolute top-1 right-1 bg-[#FF3B30] w-2 h-2 rounded-full" />
         </TouchableOpacity>

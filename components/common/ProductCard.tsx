@@ -1,6 +1,8 @@
+import { useStore } from "@/context/StoreContext";
 import { FontAwesome } from "@expo/vector-icons";
 import React, { FC } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import Toast from "react-native-toast-message";
 
 interface ProductCardProps {
   id: number;
@@ -14,20 +16,47 @@ interface ProductCardProps {
   onPress?: () => void;
 }
 
-const ProductCard: FC<ProductCardProps> = ({
-  id,
-  name,
-  price,
-  originalPrice,
-  rating,
-  reviews,
-  image,
-  badge,
-  onPress,
-}) => {
+const ProductCard: FC<ProductCardProps> = (props) => {
+  const {
+    id,
+    name,
+    price,
+    originalPrice,
+    rating,
+    reviews,
+    image,
+    badge,
+    onPress,
+  } = props;
+  
+  const { addToWishlist, wishlist, removeFromWishlist } = useStore();
+  
+  const isWishlisted = wishlist.some((item) => item.id === id);
+
   const discountPercentage = originalPrice
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
     : 0;
+
+  const handleWishlist = (e: any) => {
+    e.stopPropagation();
+    if (isWishlisted) {
+      removeFromWishlist(id);
+      Toast.show({
+        type: "info",
+        text1: "Removed from Wishlist",
+        text2: `${name} has been removed.`,
+        position: "bottom",
+      });
+    } else {
+      addToWishlist({ id, name, price, originalPrice, rating, reviews, image });
+      Toast.show({
+        type: "success",
+        text1: "Added to Wishlist",
+        text2: `${name} is now in your wishlist!`,
+        position: "bottom",
+      });
+    }
+  };
 
   return (
     <TouchableOpacity
@@ -56,8 +85,11 @@ const ProductCard: FC<ProductCardProps> = ({
           </View>
         )}
 
-        <TouchableOpacity className="absolute bottom-2 right-2 bg-white rounded-full p-1.5 shadow-md">
-          <FontAwesome name="heart-o" size={14} color="#FF3B30" />
+        <TouchableOpacity 
+          onPress={handleWishlist}
+          className="absolute bottom-2 right-2 bg-white rounded-full p-1.5 shadow-md"
+        >
+          <FontAwesome name={isWishlisted ? "heart" : "heart-o"} size={14} color="#FF3B30" />
         </TouchableOpacity>
       </View>
 

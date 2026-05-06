@@ -131,6 +131,13 @@ export default function Index() {
           </Text>
         </TouchableOpacity>
 
+        <TouchableOpacity 
+          onPress={() => router.push("/authscreen/forgot-password")}
+          className="mt-4 items-center"
+        >
+          <Text className="text-[#40BFFF] font-poppins700 text-xs">Forgot Password?</Text>
+        </TouchableOpacity>
+
         <Text className="text-center font-poppins400 text-sm text-[#9098B1] mt-4">
           OR
         </Text>

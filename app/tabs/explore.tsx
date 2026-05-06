@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -14,6 +15,7 @@ const categories = [
 ];
 
 export default function Explore() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -24,6 +26,8 @@ export default function Explore() {
             placeholder="Search products..."
             value={searchQuery}
             onChangeText={setSearchQuery}
+            onSubmitEditing={() => router.push({ pathname: "/search", params: { q: searchQuery } })}
+            onFocus={() => router.push("/search")}
             className="border-2 border-[#EBF0FF] rounded-md pl-10 py-3 text-sm font-poppins400 text-[#223263]"
             placeholderTextColor="#9098B1"
           />

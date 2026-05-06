@@ -1,20 +1,57 @@
+import { useStore } from "@/context/StoreContext";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import Toast from "react-native-toast-message";
 
 export default function ProductDetails() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
+  const { addToCart, addToWishlist, wishlist, removeFromWishlist } = useStore();
 
   const product = {
+    id: Number(id),
     name: "Nike Air Zoom Pegasus 36 Miami",
     price: 299.43,
     rating: 4.5,
     reviews: 128,
+    image: require("../../assets/images/product.png"),
     description: "The Nike Air Zoom Pegasus 36 Miami comes with a more perforated mesh upper for better breathability. A slimmer heel collar and tongue reduce bulk without compromising comfort, while exposed Flywire cables give you a snug fit at higher speeds.",
     colors: ["#FF3B30", "#40BFFF", "#FB923C", "#223263"],
     sizes: [6, 6.5, 7, 7.5, 8, 8.5],
+  };
+
+  const isWishlisted = wishlist.some((item) => item.id === product.id);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    Toast.show({
+      type: "success",
+      text1: "Added to Cart",
+      text2: `${product.name} has been added to your cart.`,
+      position: "bottom",
+    });
+  };
+
+  const handleWishlist = () => {
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+      Toast.show({
+        type: "info",
+        text1: "Removed from Wishlist",
+        text2: `${product.name} has been removed.`,
+        position: "bottom",
+      });
+    } else {
+      addToWishlist(product);
+      Toast.show({
+        type: "success",
+        text1: "Added to Wishlist",
+        text2: `${product.name} is now in your wishlist!`,
+        position: "bottom",
+      });
+    }
   };
 
   return (
@@ -26,7 +63,7 @@ export default function ProductDetails() {
         <Text className="font-poppins700 text-[#223263] text-base flex-1 ml-4" numberOfLines={1}>
           {product.name}
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/search")}>
           <FontAwesome name="search" size={20} color="#9098B1" />
         </TouchableOpacity>
       </View>
@@ -34,7 +71,7 @@ export default function ProductDetails() {
       <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
         <View className="w-full h-80 overflow-hidden bg-[#F6F6F6]">
           <Image 
-            source={require("../../assets/images/product.png")} 
+            source={product.image} 
             style={{ width: '100%', height: '100%' }}
             resizeMode="cover" 
           />
@@ -43,8 +80,8 @@ export default function ProductDetails() {
         <View className="p-4">
           <View className="flex-row justify-between items-start">
             <Text className="font-poppins700 text-[#223263] text-xl flex-1 mr-4">{product.name}</Text>
-            <TouchableOpacity>
-               <FontAwesome name="heart-o" size={24} color="#9098B1" />
+            <TouchableOpacity onPress={handleWishlist}>
+               <FontAwesome name={isWishlisted ? "heart" : "heart-o"} size={24} color={isWishlisted ? "#FF3B30" : "#9098B1"} />
             </TouchableOpacity>
           </View>
 
@@ -87,7 +124,10 @@ export default function ProductDetails() {
       </ScrollView>
 
       <View className="p-4 border-t border-[#EBF0FF]">
-        <TouchableOpacity className="bg-[#40BFFF] py-4 rounded-md shadow-sm">
+        <TouchableOpacity 
+          onPress={handleAddToCart}
+          className="bg-[#40BFFF] py-4 rounded-md shadow-sm"
+        >
           <Text className="text-center font-poppins700 text-white text-sm">Add To Cart</Text>
         </TouchableOpacity>
       </View>

@@ -13,6 +13,9 @@ import { useEffect } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "../global.css";
 
+import { StoreProvider } from "../context/StoreContext";
+import Toast from "react-native-toast-message";
+
 cssInterop(MaterialIcons, {
   className: {
     target: "style",
@@ -50,10 +53,13 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView className="flex-1">
-        <Stack screenOptions={{ headerShown: false }} />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <StoreProvider>
+      <SafeAreaProvider>
+        <SafeAreaView className="flex-1">
+          <Stack screenOptions={{ headerShown: false }} />
+          <Toast />
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </StoreProvider>
   );
 }
